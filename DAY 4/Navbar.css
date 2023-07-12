@@ -5,35 +5,65 @@
   height: 60px;
   background-color: #000000;
 }
-.navbar-toggle {
+
+.sidebar-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   padding: 0 20px;
   color: #ffffff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #f9f9f9;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.open {
+  transform: translateX(0%);
+}
+
+.close-sidebar {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size:26px;
+  background-color: transparent;
+  border: none;
+  color: #333333;
   cursor: pointer;
 }
-.dropdown-menu {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  padding: 8px 0;
-  z-index: 1;
-  display: none;
+
+.sidebar-content {
+  padding: 16px;
 }
-.dropdown-menu.open {
-  display: block;
-}
-.dropdown-menu p,
-.dropdown-menu a {
+
+.sidebar-content p,
+.sidebar-content a {
   display: block;
   color: #333333;
-  padding: 8px 16px;
+  padding: 8px 5px;
   text-decoration: none;
+  margin-top: 5px;
+  font-size: 1.1rem;
 }
+
 .navbar-logo {
   margin-right: auto;
   margin-left: 20px;
@@ -41,6 +71,7 @@
   color: #ffffff;
   text-decoration: none;
 }
+
 .nav-items {
   display: flex;
   align-items: center;
@@ -50,35 +81,38 @@
   padding: 0;
   font-size: 1.2rem;
 }
+
 .nav-items li {
   margin-right: 60px;
 }
+
 .nav-items a {
   color: #ffffff;
   text-decoration: none;
 }
-.btn-btn {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  color: #333;
-  text-decoration: none;
-}
+
 .cart-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 20px;
 }
+
+.logging-bar{
+  margin-left: 80px;
+  margin-top: -18px;
+}
 @media (max-width: 768px) {
   .nav-items {
     display: none;
   }
-  .navbar-toggle {
+
+  .sidebar-toggle {
     position: relative;
     z-index: 2;
   }
-  .navbar-toggle .fa-bars {
+
+  .sidebar-toggle .fa-bars {
     color: #ffffff;
     font-size: 24px;
   }
