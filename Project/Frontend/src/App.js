@@ -14,6 +14,7 @@ import Qrcode from "./Components/Qrcode";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import Cart from './Components/cart';
+import Profile from './Components/Profile';
 
 
 
@@ -25,6 +26,8 @@ function App() {
         <Routes>
        <Route path="/" element={<LoginForm />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+        
       <Route path="/men" element={<Men />} />
       <Route path="/support" element={<Support />} />
       <Route path="/about" element={<About />} />
