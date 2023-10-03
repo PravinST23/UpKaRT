@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Caprasimo&family=Caveat:wght@400;500&family=Comforter&family=Dancing+Script:wght@500&family=Fasthand&family=Lilita+One&family=Lora:ital@1&display=swap');
-::-webkit-scrollbar{
+/* Import fonts and other global styles */
+
+::-webkit-scrollbar {
   display: none;
 }
-body{
-  height : 100%;
+
+body {
+  height: 100%;
   background-image: url('C:\Users\pravi\Downloads\3764936.jpg');
   color: #ffffff;
-  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
-
 
 .menu {
   width: 100%;
@@ -19,12 +20,22 @@ body{
   flex-direction: column;
 }
 
+.menuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; /* Make sure the header spans the full width */
+  max-width: 1200px; /* Set a maximum width for the header */
+  padding: 0 20px; /* Add padding to the header */
+  box-sizing: border-box; /* Include padding in the width */
+  margin-bottom: 20px;
+}
+
 .menuTitle {
   font-family: 'Lora', serif;
-  justify-content: center;
   font-size: 60px;
   padding-top: -20px;
-  padding-left: 100px;
+  padding-left: 350px;
 }
 
 .menuList {
@@ -35,7 +46,6 @@ body{
   place-items: center;
   gap: 30px;
   padding-top: 40px;
-  
 }
 
 .menuItem {
@@ -74,12 +84,14 @@ body{
   margin-top: -30px;
   color: #000000;
 }
-.stock{
+
+.stock {
   color: #000000;
   margin-top: -22px;
   font-size: 1.0rem;
   font-weight: bold;
 }
+
 .menuItemPrice {
   font-size: 20px;
   font-weight: bold;
@@ -163,8 +175,51 @@ body{
   border-radius: 5px;
   cursor: pointer;
 }
-.product-img-details{
+
+.product-img-details {
   display: flex;
   justify-content: space-between;
   width: 100%;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #a1a1a1;
+  border-radius: 50px;
+  padding-left: 15px;
+  width: 350px;
+  /* margin-left: 20px; */
+  margin-right: 20px; /* Add this to move the search box to the right corner */
+}
+
+/* Style for the search icon */
+.searchIcon {
+  margin-left: 20px;
+  margin-right: 8px;
+  color: #555; /* Change the color to your preference */
+  cursor: pointer;
+}
+.search-container {
+  display: flex;
+  align-items: center;
+  width: auto;
+  margin-right: -200px;
+  flex-grow: 0; /* Don't allow the search container to grow */
+}
+/* Style for the input element */
+.search input {
+  border: none;
+  outline: none;
+  flex: 1;
+  height: 50px;
+  width: 200%;
+  font-size: 1rem;
+  background-color: transparent;
+  padding-left: 10px;
+}
+
+.search input::placeholder {
+  font-size: 1rem;
 }

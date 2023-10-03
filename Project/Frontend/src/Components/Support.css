@@ -49,6 +49,7 @@
         font-weight: 600;
         font-size: 0.9rem;
         padding-left: 40px;
+        border-color: #aaa;
     }
     .contact-form ::placeholder{
         color: #aaa;

@@ -9,12 +9,12 @@ import './Navbar.css';
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const wishlist = useSelector(state => state.wishlist);
-  const cart = useSelector(state => state.cart);
+  const wishlist = useSelector((state) => state.wishlist);
+  const cart = useSelector((state) => state.cart);
   const [loggedInUser, setLoggedInUser] = useState(null);
-  const userRole = useSelector(state => state.role);
-  const reduxEmail = useSelector(state => state.email);
-  const dispatch=useDispatch();
+  const userRole = useSelector((state) => state.role);
+  const reduxEmail = useSelector((state) => state.email);
+  const dispatch = useDispatch();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -27,16 +27,11 @@ const Navbar = () => {
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        const response = await axios.get(
-          "http://127.0.0.1:8181/api/v1/auth/email"
-        );
+        const response = await axios.get('http://127.0.0.1:8181/api/v1/auth/email');
         const userDetails = response.data;
-        console.log(userDetails);
-        dispatch({type:"SET_DETAILS",payload:userDetails});
+        dispatch({ type: 'SET_DETAILS', payload: userDetails });
         if (userDetails) {
-          const loggedInUserDetails = userDetails.find(
-            user1 => user1.email === reduxEmail
-          );
+          const loggedInUserDetails = userDetails.find((user1) => user1.email === reduxEmail);
           if (loggedInUserDetails) {
             setLoggedInUser(loggedInUserDetails);
           }
@@ -47,7 +42,7 @@ const Navbar = () => {
     };
 
     fetchProfileData();
-  }, [reduxEmail]);
+  }, [dispatch, reduxEmail]);
 
   return (
     <div>
@@ -88,12 +83,12 @@ const Navbar = () => {
           {loggedInUser ? (
             <p>Hello {loggedInUser.name}</p>
           ):(<p>Hello Guest</p>)}
-          <Link to="/account-settings" onClick={handleSidebarLinkClick}>
-            Account Settings
+          <Link to="/profile" onClick={handleSidebarLinkClick}>
+            Profile
           </Link>
           {userRole === 'Vendor' && (
             <Link to="/vendor" onClick={handleSidebarLinkClick}>
-              Add Product
+              New Product?
             </Link>
           )}
           <Link to="/wishlist" onClick={handleSidebarLinkClick}>

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './Men.css';
+import './Men.css'; // You can use the same CSS file as in Men.js and Women.js
 import Navbar from './Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartPlus, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faHeart, faSearch } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,6 +14,7 @@ const Kids = () => {
   const dispatch = useDispatch();
   const [kidsProducts, setKidsProducts] = useState([]);
   const loggedInUserId = useSelector(state => state.set.find(item => item.email === state.email)?.id);
+  const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
     fetchKidsProducts();
@@ -59,13 +60,33 @@ const Kids = () => {
     }
   };
 
+  // Filter the products based on the search input value
+  const filteredProducts = kidsProducts.filter(item =>
+    item.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
   return (
     <div>
       <Navbar cartCount={cart.length} />
       <div className="menu">
-        <h1 className="menuTitle">TimeTrekker</h1>
+        <div className="menuHeader">
+          <h1 className="menuTitle" style={{paddingLeft:'410px'}}>TimeTrekker</h1>
+          <div className="search-container">
+            <div className="search">
+              <div className="searchIcon">
+                <FontAwesomeIcon icon={faSearch} />
+              </div>
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+              />
+            </div>
+          </div>
+        </div>
         <div className="menuList">
-          {kidsProducts.map((item, index) => (
+          {filteredProducts.map((item, index) => (
             <div className="menuItem" key={index}>
               <div className="menuItemImg" style={{ backgroundImage: `url(data:image/jpeg;base64,${item.image})` }} />
               <div className='product-img-details'>

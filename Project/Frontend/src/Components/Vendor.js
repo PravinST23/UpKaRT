@@ -69,7 +69,7 @@ const Vendor = () => {
     <div>
       <Navbar />
       <div className="vendorContainer">
-        <h1 className="vendorTitle">Add Product</h1>
+        <h1 className="vendorTitle">New Product?</h1>
         <div className="vendorForm">
           <input
             type="text"
@@ -78,7 +78,7 @@ const Vendor = () => {
             onChange={(e) => setProductName(e.target.value)}
           />
 
-          <select
+          <select style={{borderColor:'lightgrey'}}
             className="dropdown-select"
             value={targetAudience}
             onChange={handleDropdownChange}
@@ -105,7 +105,7 @@ const Vendor = () => {
             onChange={(e) => setProductStock(e.target.value)}
           />
 
-          <input
+          <input style={{borderColor:'lightgrey'}}
             type="file"
             id="productImage"
             className="image-input"
